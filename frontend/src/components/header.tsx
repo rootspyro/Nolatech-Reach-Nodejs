@@ -1,14 +1,20 @@
 export default function Header() {
   return (
-    <header className="w-full bg-green-light  flex justify-center text-white gap-4">
-      <div className="bg-red">
-        <span className="font-bold text-xl p-3">LIVE</span>
-      </div>
-      <div>
-        <span className="text-lg">Lorem ipsum dolor sit amet</span>
+    <header className="fixed w-full bg-green-light flex justify-center  text-white gap-4">
+      <div className="bg-red flex gap-2 p-1 justify-center items-center">
+        <span className="font-bold text-2xl">
+          LIVE
+        </span>
+        <i className="ico-broadcast font-bold text-xl"></i>
       </div>
       <div className="">
-        <button className="text-sm h-full font-bold px-2 bg-green-base">JOIN NOW!</button>
+        <span className="text-lg h-full flex justify-center items-center">Lorem ipsum dolor sit amet</span>
+      </div>
+      <div className="bg-green-base">
+        <button className="text-sm font-bold px-2 flex gap-2 justify-center items-center h-full">
+          JOIN NOW!
+          <i className="ico-play-circle font-bold text-xl"></i>
+        </button>
       </div>
     </header>
   )

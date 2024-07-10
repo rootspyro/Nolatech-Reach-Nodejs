@@ -1,3 +1,77 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'nolatech';
+  src:  url('assets/fonts/nolatech.eot?60h6jq');
+  src:  url('assets/fonts/nolatech.eot?60h6jq#iefix') format('embedded-opentype'),
+    url('assets/fonts/nolatech.ttf?60h6jq') format('truetype'),
+    url('assets/fonts/nolatech.woff?60h6jq') format('woff'),
+    url('assets/fonts/nolatech.svg?60h6jq#nolatech') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+i {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'nolatech' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ico-chevron-up:before {
+  content: "\e900";
+}
+.ico-chevron-down:before {
+  content: "\e901";
+}
+.ico-chevron-left:before {
+  content: "\e902";
+}
+.ico-chevron-right:before {
+  content: "\e903";
+}
+.ico-box-arrow-left:before {
+  content: "\e904";
+}
+.ico-person-fill:before {
+  content: "\e905";
+}
+.ico-github:before {
+  content: "\e906";
+}
+.ico-list:before {
+  content: "\e907";
+}
+.ico-tiktok:before {
+  content: "\e908";
+}
+.ico-youtube:before {
+  content: "\e909";
+}
+.ico-instagram:before {
+  content: "\e90a";
+}
+.ico-twitter:before {
+  content: "\e90b";
+}
+.ico-facebook:before {
+  content: "\e90c";
+}
+.ico-play-circle:before {
+  content: "\e90d";
+}
+.ico-broadcast:before {
+  content: "\e90e";
+}
+
