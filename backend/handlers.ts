@@ -23,22 +23,36 @@ async function GetUsers(): Promise<UserItem[]> {
 
 async function CreateUser(body: NewUserBody): Promise<UserItem> {
 
-  const newUser = await UserModel.create({
-    username: body.username,
-    email: body.email,
-    password: body.password
-  });
+  let user: UserItem = {
+    id: 0,
+    username: "",
+    email: "",
+    createdAt: "",
+    updatedAt: ""
+  };
 
-  const user: UserItem = {
-    id: newUser.dataValues.id,
-    username: newUser.dataValues.username,
-    email: newUser.dataValues.email,
-    createdAt: newUser.dataValues.createdAt,
-    updatedAt: newUser.dataValues.updatedAt
+  try {
+    const newUser = await UserModel.create({
+      username: body.username,
+      email: body.email,
+      password: body.password
+    });
+
+    user = {
+      id: newUser.dataValues.id,
+      username: newUser.dataValues.username,
+      email: newUser.dataValues.email,
+      createdAt: newUser.dataValues.createdAt,
+      updatedAt: newUser.dataValues.updatedAt
+    }
+  } catch(err) {
+
+    console.log(err)
+
+  } finally {
+
+    return user
   }
-
-  return user;
-  
 }
 
 
