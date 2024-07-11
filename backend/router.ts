@@ -1,8 +1,10 @@
 import { Router, Request, Response } from "express";
+// import UserModel from "./db/models/user.model";
 
 const router: Router = Router()
 
-router.get("/user", (req: Request, res: Response) => {
+router.get("/user", async (req: Request, res: Response) => {
+
   const data: UserItem[] = [
     {
       id: 1,

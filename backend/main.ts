@@ -17,6 +17,10 @@ try {
   console.error("Unable to connect to database: ", err);
 }
 
+(async () => {
+  await sequelize.sync({ force: true });
+})();
+
 app.use("/api/v1", router);
 
 app.listen(port, () => {
