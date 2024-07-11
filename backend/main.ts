@@ -1,11 +1,24 @@
-import express, { Express, Request, Response } from "express";
+import express, { Express } from "express";
 import router from "./router";
+import sequelize from "./db/conn";
+import dotenv from "dotenv";
+
+dotenv.config()
 
 const app: Express = express();
-const port: number = 3000;
+const port = process.env.PORT;
 
-app.use("/api/v1", router)
+// test connection
+try {
+  sequelize.authenticate();
+  console.log("Connection has been established successfully");
+
+} catch(err) {
+  console.error("Unable to connect to database: ", err);
+}
+
+app.use("/api/v1", router);
 
 app.listen(port, () => {
   console.log(`server listening on port: ${port}`);
-})
+});
