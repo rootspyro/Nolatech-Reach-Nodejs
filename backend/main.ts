@@ -8,19 +8,11 @@ dotenv.config()
 const app: Express = express();
 const port = process.env.PORT;
 
-// test connection
-try {
-  sequelize.authenticate();
-  console.log("Connection has been established successfully");
-
-} catch(err) {
-  console.error("Unable to connect to database: ", err);
-}
-
 (async () => {
-  await sequelize.sync({ force: true });
+  await sequelize.sync();
 })();
 
+app.use(express.json())
 app.use("/api/v1", router);
 
 app.listen(port, () => {

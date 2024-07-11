@@ -1,35 +1,36 @@
 import { Router, Request, Response } from "express";
-// import UserModel from "./db/models/user.model";
+import { NewUserBody } from "./pipes";
+import { GetUsers, CreateUser } from "./handlers";
 
 const router: Router = Router()
 
-router.get("/user", async (req: Request, res: Response) => {
+router.get("/users", async (req: Request, res: Response) => {
 
-  const data: UserItem[] = [
-    {
-      id: 1,
-      username: "spyro",
-      email: "example@gmail.com"
-    }
-  ];
+  const data = await GetUsers();
 
   const response: ApiResponse = {
     success: true,
     data: data
   }
 
-  res.json(response)
+  res.json(response);
+})
+
+router.post("/users", async(req: Request, res: Response) => {
+  const body: NewUserBody = req.body;
+
+  const data = await CreateUser(body);
+
+  const response: ApiResponse = {
+    success: true,
+    data: data
+  }
+
+  res.json(response);
 })
 
 interface ApiResponse {
   success: boolean;
   data: any;
 }
-
-interface UserItem {
-  id: number;
-  username: string;
-  email: string;
-}
-
 export default router;
