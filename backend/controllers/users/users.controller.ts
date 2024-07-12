@@ -2,6 +2,7 @@ import { Request, Response} from "express";
 import { UserItem, NewUserBody } from "./users.pipes";
 import UserModel from "../../db/models/user.model";
 import { Op } from "sequelize";
+import { hash } from "bcrypt";
 
 async function GetUsers(req: Request, res: Response) {
   let items: UserItem[] = [];
@@ -59,11 +60,14 @@ async function CreateUser(req: Request, res: Response) {
       return 
     }
 
+    // hash password
+    const passwordHashed = await hash(body.password, 10)
+
     // create user
     const newUserData = await UserModel.create({
       username: body.username,
       email: body.email,
-      password: body.password
+      password: passwordHashed
     });
 
     const data = newUserData.dataValues;
