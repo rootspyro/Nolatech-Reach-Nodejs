@@ -9,9 +9,66 @@ const salt = 10;
 async function GetUsers(req: Request, res: Response) {
   let items: UserItem[] = [];
 
+  const queries = req.query;
+
   try {
 
-    const userResponse = await UserModel.findAll();
+    // set default filters
+    let limit: number = 10;
+    let offset: number = 0;
+
+    if (queries?.count) {
+      const count: string = queries?.count.toString();
+      const parsedCount: number = parseInt(count); 
+
+      if (!parsedCount) {
+        res.status(400).json({
+          success: false,
+          error: "count value must be an integer"
+        })
+        return
+      }
+
+      if (parsedCount < 1) {
+        res.status(400).json({
+          success: false,
+          error: "count value must be an higher than 0"
+        })
+        return
+      }
+
+      limit = parsedCount;
+
+    }
+
+    if (queries?.page) {
+      const page: string = queries?.page.toString();
+      const parsedPage: number = parseInt(page);
+
+      if (!parsedPage) {
+        res.status(400).json({
+          success: false,
+          error: "page value must be an integer"
+        })
+        return
+      }
+
+      if (parsedPage < 1) {
+        res.status(400).json({
+          success: false,
+          error: "page value must be higher than 0"
+        })
+        return
+      }
+
+      offset = limit * (parsedPage - 1);
+    }
+
+    const userResponse = await UserModel.findAll({
+      limit: limit,
+      offset: offset
+    });
+
     userResponse.map(user => {
       const data = user.dataValues; 
 
