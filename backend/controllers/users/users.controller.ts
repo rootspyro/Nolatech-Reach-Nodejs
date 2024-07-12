@@ -4,6 +4,8 @@ import UserModel from "../../db/models/user.model";
 import { Op } from "sequelize";
 import { hash } from "bcrypt";
 
+const salt = 10;
+
 async function GetUsers(req: Request, res: Response) {
   let items: UserItem[] = [];
 
@@ -100,7 +102,7 @@ async function CreateUser(req: Request, res: Response) {
     }
 
     // hash password
-    const passwordHashed = await hash(body.password, 10)
+    const passwordHashed = await hash(body.password, salt)
 
     // create user
     const newUserData = await UserModel.create({
@@ -189,6 +191,130 @@ async function GetSingleUser(req: Request, res: Response) {
   }
 }
 
+async function UpdateUser(req: Request, res: Response) {
+  const body: NewUserBody = req.body;
+  
+  const userId: string = req.param("userId");
+  const parsedId: number = parseInt(userId);
+
+  if (!parsedId) {
+    res.status(400).json({
+      success: false,
+      error: "user id must be an integer number"
+    });
+    return
+  }
+
+  try {
+    // validate if user exist before updated it
+    const user = await UserModel.findOne({
+      where: {
+        id: parsedId
+      }
+    });
+
+    if (user == null) {
+      res.status(404).json({
+        success: false,
+        error: "user not found"
+      });
+      return
+    }
+
+    const userData = user.dataValues;
+
+    // build update data
+    if (!body.username) {
+      body.username = userData.username; 
+    }
+
+    if (!body.email) {
+      body.email = userData.email;
+    }
+
+    // hash new password if exists
+    if (body.password) {
+      // validate password
+      if(!validatePassword(body.password)) {
+        res.status(400).json({
+          success: false,
+          error: "invalid password",
+          passwordRequirements: [
+            "minium length: 8",
+            "uppercase",
+            "lowercase",
+            "one symbol"
+          ]
+        });
+        return
+      }
+
+      // password is valid -> hash new password
+      const hashedPassword = await hash(body.password, salt);
+      body.password = hashedPassword;
+    }
+
+    const updatedUser = await UserModel.update(body, {
+      where: {
+        id: parsedId
+      }
+    });
+
+    // update the data
+    if (updatedUser == null) {
+      res.status(404).json({
+        success: false,
+        error: "user not found"
+      });
+      return
+    }
+
+    if (!updatedUser[0]) {
+      res.status(500).json({
+        success: false,
+        error: "error from the data layer"
+      });
+    }
+
+    // get new data
+    const userNewData = await UserModel.findOne({
+      where: {
+        id: parsedId
+      }
+    });
+
+    if (user == null) {
+      res.status(404).json({
+        success: false,
+        error: "user not found"
+      });
+      return
+    }
+
+    const response: UserItem = {
+      id: userNewData?.dataValues.id,
+      username: userNewData?.dataValues.username,
+      email: userNewData?.dataValues.email,
+      createdAt: userNewData?.dataValues.createdAt,
+      updatedAt: userNewData?.dataValues.updatedAt,
+    }
+
+    res.status(200).json({
+      success: true,
+      data: response
+    });
+
+  } catch(err) {
+
+    // Something went wrong in the process 
+    console.log(err)
+    res.status(500).json({
+      success: false,
+      error: "error from the data layer"
+    });
+  }
+}
+
 async function DeleteUser(req: Request, res: Response) {
   const userId: string = req.param("userId");
   const parsedId: number = parseInt(userId);
@@ -241,6 +367,7 @@ const usersController = {
   GetUsers,
   GetSingleUser,
   CreateUser,
+  UpdateUser,
   DeleteUser
 }
 
