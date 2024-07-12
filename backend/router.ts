@@ -6,6 +6,13 @@ import { Request, Response } from "express";
 const router: Router = Router()
 
 // Unprotected endpoints
+router.get("/health", (req: Request, res: Response) => {
+  res.status(200).json({
+    success: true,
+    data: "server is up"
+  })
+})
+
 router.post("/users", usersController.CreateUser);
 router.post("/auth/login", authController.Login)
 
