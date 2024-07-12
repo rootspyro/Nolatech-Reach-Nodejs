@@ -1,10 +1,10 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { LoginBody, TokenPayload } from "./auth.pipes";
 import UserModel from "../../db/models/user.model";
 import { Op } from "sequelize";
-import { compare } from "bcrypt";
+import { compare} from "bcrypt";
 import { configDotenv } from "dotenv";
-import { sign } from "jsonwebtoken";
+import { sign, verify } from "jsonwebtoken";
 
 configDotenv();
 
@@ -99,8 +99,67 @@ async function Login(req: Request, res: Response) {
 
 }
 
+async function ValidAuth(req: Request, res: Response, next: NextFunction) {
+  const header = req.header("Authorization");
+  if( header == undefined ) {
+    res.status(401).json({
+      success: false,
+      error: "Authorization Header missed"
+    });
+    return
+  }
+
+  // get token
+
+  const headerParts = header.split(" ");
+  let token: string = "";
+
+  // Authorization: Bearer token....
+  if (headerParts.length > 1) {
+    token = headerParts[1];
+
+  } else {  // Authorization: token...
+    token = headerParts[0];
+  }
+
+  // validate secret is defined
+  const secret: string | undefined = process.env.SECRET;
+  if (secret == undefined) {
+    console.error("SECRET KEY MISSED");
+    res.json({
+      success: false,
+      error: "error from the data layer"
+    });
+    return 
+  }
+
+  // verify token
+  try {
+
+    const decoded = verify(token, secret);
+    if (decoded) {
+      next();
+    } else {
+
+      res.json({
+        success: false,
+        error: "unauthorized"
+      });
+      return
+    }
+
+  } catch {
+    res.json({
+      success: false,
+      error: "unauthorized"
+    });
+  }
+
+} 
+
 const authController = {
   Login,
+  ValidAuth,
 }
 
 export default authController;
