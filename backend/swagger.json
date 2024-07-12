@@ -26,6 +26,14 @@
   "schemes": [
     "http"
   ],
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header",
+      "description": ""
+    }
+  },
   "paths": {
     "/users": {
       "get": {
@@ -34,6 +42,11 @@
         ],
         "summary": "Get list of users",
         "description": "",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
         "parameters": [
           {
             "name": "page",
@@ -143,6 +156,11 @@
         ],
         "summary": "Get single user",
         "description": "",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
         "parameters": [
           {
             "name": "userId",
@@ -192,6 +210,11 @@
         "description": "",
         "tags": [
           "users"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
         ],
         "parameters": [
           {
@@ -249,6 +272,11 @@
         "description": "",
         "tags": [
           "users"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
         ],
         "parameters": [
           {
