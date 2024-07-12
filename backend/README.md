@@ -28,7 +28,7 @@ $ docker run -d --name nolatech -p5432:5432 \
 postgres:latest
 ```
 
-3. Puedes ejecutar el script SQL [CREATE_TABLE_USERS.sql](backend/db/queries/CREATE_TABLE_USERS.sql) para crear la tabla de usuarios y el usuario por defecto.
+3. Puedes ejecutar el script SQL [CREATE_TABLE_USERS.sql](db/queries/CREATE_TABLE_USERS.sql) para crear la tabla de usuarios y el usuario por defecto.
 ```shell
 $ psql -h localhost -U nolatech nolatechdb < ./db/queries/CREATE_TABLE_USERS.sql
 ```
