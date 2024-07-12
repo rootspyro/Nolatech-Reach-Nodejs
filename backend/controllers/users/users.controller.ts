@@ -44,6 +44,45 @@ async function CreateUser(req: Request, res: Response) {
 
   const body: NewUserBody = req.body;
 
+  // validate body
+  if (!body.username) {
+    res.status(400).json({
+      success: false,
+      error: "username is required in request body"
+    })
+    return
+  }
+
+  if (!body.email) {
+    res.status(400).json({
+      success: false,
+      error: "email field is required in request body"
+    })
+    return
+  }
+
+  if (!body.password) {
+    res.status(400).json({
+      success: false,
+      error: "password is required in request body"
+    })
+    return
+  }
+
+  if (!validatePassword(body.password)) {
+    res.status(400).json({
+      success: false,
+      error: "invalid password",
+      passwordRequirements: [
+        "minium length: 8",
+        "uppercase",
+        "lowercase",
+        "one symbol"
+      ]
+    })
+    return
+  }
+
   // validate if user exist already
   try {
     const userExists = await UserModel.findOne({
@@ -148,6 +187,11 @@ async function GetSingleUser(req: Request, res: Response) {
       error: "error from the data layer"
     });
   }
+}
+
+function validatePassword(password: string): boolean {
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}$/;
+  return passwordRegex.test(password);
 }
 
 const usersController = {
