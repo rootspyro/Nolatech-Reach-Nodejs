@@ -13,4 +13,4 @@ CREATE TABLE public.users (
 );
 
 /* INSERT DEFAULT USER */
-INSERT INTO users (username, email, password, "createdAt", "updatedAt") VALUES('admin', 'admin@example.com', '$2a$10$.CyH4tUZRfvYDwqaRu7eauyerNZVgREa4iaFIOLdeHTaQx/a9ebGq', now(), now());
+INSERT INTO users (username, email, password, "createdAt", "updatedAt") VALUES('admin', 'admin@example.com', '$2a$10$fRYSLKN7PCbdTB3zgH6Qvunthd/15FPaRHTOKHIm3HGGswZS60lyi', now(), now());

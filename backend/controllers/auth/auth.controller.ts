@@ -39,7 +39,7 @@ async function Login(req: Request, res: Response) {
     });
 
     if (user == null) {
-      res.status(404).json({
+      res.status(401).json({
         success: false,
         error: "invalid user or password"
       });
@@ -51,7 +51,7 @@ async function Login(req: Request, res: Response) {
     const passwordMatch: boolean = await compare(body.password, userData.password);
 
     if (!passwordMatch) {
-      res.status(404).json({
+      res.status(401).json({
         success: false,
         error: "invalid user or password"
       });
@@ -126,7 +126,7 @@ async function ValidAuth(req: Request, res: Response, next: NextFunction) {
   const secret: string | undefined = process.env.SECRET;
   if (secret == undefined) {
     console.error("SECRET KEY MISSED");
-    res.json({
+    res.status(500).json({
       success: false,
       error: "error from the data layer"
     });
@@ -141,7 +141,7 @@ async function ValidAuth(req: Request, res: Response, next: NextFunction) {
       next();
     } else {
 
-      res.json({
+      res.status(401).json({
         success: false,
         error: "unauthorized"
       });
@@ -149,7 +149,7 @@ async function ValidAuth(req: Request, res: Response, next: NextFunction) {
     }
 
   } catch {
-    res.json({
+    res.status(401).json({
       success: false,
       error: "unauthorized"
     });

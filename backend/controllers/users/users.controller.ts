@@ -217,10 +217,10 @@ async function GetSingleUser(req: Request, res: Response) {
     })
 
     if ( userData == null ) {
-      res.json({
+      res.status(404).json({
         success: false,
         error: "user not found"
-      })
+      });
       return
     }
 
