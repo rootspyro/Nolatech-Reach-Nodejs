@@ -283,10 +283,65 @@ async function UpdateUser(req: Request, res: Response) {
     // build update data
     if (!body.username) {
       body.username = userData.username; 
+    } else {
+
+      // validate that username is not taken already
+      const count = await UserModel.count({
+        where: {
+          [Op.and]: [
+            {
+              username: body.username
+            },
+            {
+              id: {
+                [Op.or]: [
+                  {[Op.gt]: userId},
+                  {[Op.lt]: userId}
+                ]
+              }
+            }
+          ]
+        }
+      });
+
+      if (count > 0) {
+        res.status(409).json({
+          success: false,
+          error: "username already taken"
+        });
+        return
+      }
     }
 
     if (!body.email) {
       body.email = userData.email;
+    } else {
+      // validate that email is not taken already
+      const count = await UserModel.count({
+        where: {
+          [Op.and]: [
+            {
+              email: body.email
+            },
+            {
+              id: {
+                [Op.or]: [
+                  {[Op.gt]: userId},
+                  {[Op.lt]: userId}
+                ]
+              }
+            }
+          ]
+        }
+      });
+
+      if (count > 0) {
+        res.status(409).json({
+          success: false,
+          error: "email already taken"
+        });
+        return
+      }
     }
 
     // hash new password if exists
