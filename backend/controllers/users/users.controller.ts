@@ -189,6 +189,49 @@ async function GetSingleUser(req: Request, res: Response) {
   }
 }
 
+async function DeleteUser(req: Request, res: Response) {
+  const userId: string = req.param("userId");
+  const parsedId: number = parseInt(userId);
+
+  if (!parsedId) {
+    res.status(400).json({
+      success: false,
+      error: "user id must be an integer number"
+    });
+    return
+  }
+
+  try {
+
+    const deletedUser = await UserModel.destroy({
+      where: {
+        id: parsedId
+      }
+    });
+
+    if (!deletedUser) {
+      res.status(404).json({
+        success: false,
+        error: "user not found"
+      });
+      return
+    }
+
+    res.status(200).json({
+      success: true,
+      data: "user successfully deleted"
+    });
+
+  } catch(err) {
+
+    console.log(err)
+    res.status(500).json({
+      success: false,
+      error: "error from the data layer"
+    });
+  }
+}
+
 function validatePassword(password: string): boolean {
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}$/;
   return passwordRegex.test(password);
@@ -198,6 +241,7 @@ const usersController = {
   GetUsers,
   GetSingleUser,
   CreateUser,
+  DeleteUser
 }
 
 export default usersController;

@@ -6,5 +6,6 @@ const router: Router = Router()
 router.get("/users", usersController.GetUsers);
 router.get("/users/:userId", usersController.GetSingleUser)
 router.post("/users", usersController.CreateUser);
+router.delete("/users/:userId", usersController.DeleteUser)
 
 export default router;
