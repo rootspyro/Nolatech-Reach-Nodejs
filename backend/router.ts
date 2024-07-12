@@ -4,12 +4,15 @@ import authController from "./controllers/auth/auth.controller";
 
 const router: Router = Router()
 
-router.get("/users", usersController.GetUsers);
-router.get("/users/:userId", authController.ValidAuth, usersController.GetSingleUser);
+// Unprotected endpoints
 router.post("/users", usersController.CreateUser);
-router.patch("/users/:userId", usersController.UpdateUser);
-router.delete("/users/:userId", usersController.DeleteUser);
-
 router.post("/auth/login", authController.Login)
+
+// Protected endpoints (Authorization header required)
+router.get("/users", authController.ValidAuth, usersController.GetUsers);
+router.get("/users/:userId", authController.ValidAuth, usersController.GetSingleUser);
+router.patch("/users/:userId", authController.ValidAuth, usersController.UpdateUser);
+router.delete("/users/:userId", authController.ValidAuth, usersController.DeleteUser);
+
 
 export default router;
