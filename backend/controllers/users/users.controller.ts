@@ -94,7 +94,62 @@ async function CreateUser(req: Request, res: Response) {
   }
 }
 
-export {
+async function GetSingleUser(req: Request, res: Response) {
+  const userId: string = req.param("userId");
+  const parsedId: number = parseInt(userId);
+
+  if (!parsedId) {
+    res.status(400).json({
+      success: false,
+      error: "user id must be an integer number"
+    });
+    return
+  }
+
+  try {
+
+    const userData = await UserModel.findOne({
+      where: {
+        id: parsedId
+      }
+    })
+
+    if ( userData == null ) {
+      res.json({
+        success: false,
+        error: "user not found"
+      })
+      return
+    }
+
+    const data = userData.dataValues;
+
+    let response: UserItem = {
+      id: data.id,
+      username: data.username,
+      email: data.email,
+      createdAt: data.createdAt,
+      updatedAt: data.updatedAt
+    };
+
+    res.status(200).json({
+      success: true,
+      data: response
+    })
+
+  } catch(err) {
+    console.log(err);
+    res.status(500).json({
+      success: false,
+      error: "error from the data layer"
+    });
+  }
+}
+
+const usersController = {
   GetUsers,
+  GetSingleUser,
   CreateUser,
 }
+
+export default usersController;
