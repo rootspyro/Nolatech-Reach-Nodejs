@@ -33,7 +33,7 @@ postgres:latest
 $ psql -h localhost -U nolatech nolatechdb < ./db/queries/CREATE_TABLE_USERS.sql
 ```
 
-4. Para crear las variables de entorno puedes copiar el contenido de [.env.model](backend/.env.model) en un archivo `.env` ejecutando el comando:
+4. Para crear las variables de entorno puedes copiar el contenido de [.env.model](.env.model) en un archivo `.env` ejecutando el comando:
 ```shell
 $ cp .env.model .env
 ```
