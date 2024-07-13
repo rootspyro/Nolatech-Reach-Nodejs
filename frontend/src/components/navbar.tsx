@@ -16,7 +16,7 @@ export default function Navbar() {
           <a href="#">LOREM IPSUM</a>
         </li>
         <li className="p-2">
-          <a href="#">LOGIN</a>
+          <a href="/login">LOGIN</a>
         </li>
         <li className="bg-white text-gray-dark rounded p-2">
           <a href="/signup">REGISTRO</a>

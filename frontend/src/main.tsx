@@ -15,6 +15,7 @@ import Header from './components/header.tsx'
 // Pages 
 import NotFound from './pages/NotFound.tsx'
 import SignUp from './pages/SignUp.tsx';
+import Login from './pages/Login.tsx';
 
 
 const router = createBrowserRouter([
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <SignUp />
+  },
+  {
+    path: "/login",
+    element: <Login />
   },
   {
     path: "*",
