@@ -1,5 +1,5 @@
 import { Request, Response} from "express";
-import { UserItem, NewUserBody } from "./users.pipes";
+import { UserItem, NewUserBody, UserWithPassword } from "./users.pipes";
 import UserModel from "../../db/models/user.model";
 import { Op } from "sequelize";
 import { hash } from "bcrypt";
@@ -186,10 +186,11 @@ async function CreateUser(req: Request, res: Response) {
 
     const data = newUserData.dataValues;
 
-    let newUser: UserItem = {
+    let newUser: UserWithPassword = {
       id: data.id,
       username: data.username,
       email: data.email,
+      passwordHash: data.password,
       createdAt: data.createdAt,
       updatedAt: data.updatedAt
     };
@@ -437,10 +438,11 @@ async function UpdateUser(req: Request, res: Response) {
       return
     }
 
-    const response: UserItem = {
+    const response: UserWithPassword = {
       id: userNewData?.dataValues.id,
       username: userNewData?.dataValues.username,
       email: userNewData?.dataValues.email,
+      passwordHash: userNewData?.dataValues.password,
       createdAt: userNewData?.dataValues.createdAt,
       updatedAt: userNewData?.dataValues.updatedAt,
     }

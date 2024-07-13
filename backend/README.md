@@ -154,11 +154,14 @@ Respuesta de ejemplo:
     "id": 1,
     "username": "admin",
     "email": "admin@example.com",
+    "passwordHash": "$2a$10$fRYSLKN7PCbdTB3zgH6Qvunthd/15FPaRHTOKHIm3HGGswZS60lyi",
     "createdAt": "2024-07-12T23:23:12.517Z",
     "updatedAt": "2024-07-12T23:23:12.517Z"
   }
 }
 ```
+
+__IMPORTANTE__: Se ha agregado el hash de las contraseña a la respuesta para demostrar el cifrado de la constraseña al crear el usuario, ya que es un requisito de la prueba. En este caso se usa [Bcrypt](https://en.wikipedia.org/wiki/Bcrypt) como algoritmo de hash.
 
 Es necesario crear una contraseña segura que cumpla los siguientes requisitos:
 - Longitud mínima de 8 caracteres.

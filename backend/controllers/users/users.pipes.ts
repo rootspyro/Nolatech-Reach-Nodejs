@@ -12,7 +12,17 @@ interface UserItem {
   updatedAt: string;
 }
 
+interface UserWithPassword {
+  id: number;
+  username: string;
+  email: string;
+  passwordHash: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
 export type {
   NewUserBody,
   UserItem,
+  UserWithPassword,
 }
