@@ -18,6 +18,8 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
+import SideMenu from './components/sideMenu';
+
 const onSubmit = (e: any) => {
   e.preventDefault();
   console.log("hello world");
@@ -26,6 +28,7 @@ const onSubmit = (e: any) => {
 function App() {
   return (
     <>
+      <SideMenu />
       <div id="home-header" className="w-full bg-center bg-cover py-10 px-20">
         <div className="w-full flex-row flex justify-between mt-5 items-center">
           <img src={iconGrab} alt="logo" width="160"/>
