@@ -116,7 +116,7 @@ async function CreateUser(req: Request, res: Response) {
     res.status(400).json({
       success: false,
       error: "email field is required in request body"
-    })
+    });
     return
   }
 
@@ -124,7 +124,15 @@ async function CreateUser(req: Request, res: Response) {
     res.status(400).json({
       success: false,
       error: "password is required in request body"
-    })
+    });
+    return
+  }
+
+  if (body.username.length < 3) {
+    res.status(400).json({
+      success: false,
+      error: "username length must be greater than 2",
+    });
     return
   }
 
@@ -138,7 +146,15 @@ async function CreateUser(req: Request, res: Response) {
         "lowercase",
         "one symbol"
       ]
-    })
+    });
+    return
+  }
+
+  if (!validateEmail(body.email)) {
+    res.status(400).json({
+      success: false,
+      error: "invalid email format",
+    });
     return
   }
 
@@ -285,6 +301,15 @@ async function UpdateUser(req: Request, res: Response) {
       body.username = userData.username; 
     } else {
 
+      // validate username length
+      if (body.username.length < 3) {
+        res.status(400).json({
+          success: false,
+          error: "username length must be greater than 2",
+        });
+        return
+      }
+
       // validate that username is not taken already
       const count = await UserModel.count({
         where: {
@@ -316,6 +341,15 @@ async function UpdateUser(req: Request, res: Response) {
     if (!body.email) {
       body.email = userData.email;
     } else {
+      // validate email format
+      if (!validateEmail(body.email)) {
+        res.status(400).json({
+          success: false,
+          error: "invalid email format",
+        });
+        return
+      }
+
       // validate that email is not taken already
       const count = await UserModel.count({
         where: {
@@ -473,6 +507,11 @@ async function DeleteUser(req: Request, res: Response) {
 function validatePassword(password: string): boolean {
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}$/;
   return passwordRegex.test(password);
+}
+
+function validateEmail(email: string): boolean {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
 }
 
 const usersController = {
