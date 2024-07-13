@@ -15,6 +15,9 @@ export default {
         "gray-base":"#9A9A9A",
         "gray-dark": "#170B01",
 
+      },
+      fontFamily: {
+        "roboto": ["Roboto", "sans-serif"]
       }
     },
   },
