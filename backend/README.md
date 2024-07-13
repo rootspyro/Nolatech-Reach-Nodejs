@@ -1,4 +1,4 @@
-# Backend
+# Nolatech: Backend
 El backend de esta prueba es un CRUD de usuarios en formato API Restful.
 
 ## Stack Tecnológico
