@@ -11,6 +11,12 @@ type Inputs = {
   confirmPassword: string;
 }
 
+type ServerResponse = {
+  success: boolean;
+  data: any;
+  error: string;
+}
+
 export default function SignUp() {
   const navigate = useNavigate();
   const [visible, SetVisible] = useState<boolean>(false);
@@ -24,20 +30,57 @@ export default function SignUp() {
   } = useForm<Inputs>();
 
   useEffect(() => {
-
   }, [visible]);
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
+  const onSubmit: SubmitHandler<Inputs> = async(data: Inputs) => {
 
-    console.log(data);
+    const endpoint = import.meta.env.VITE_API_HOST + "/users";
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        username: data.username,
+        email: data.email,
+        password: data.password
+      })
+    });
 
-    SetMessage("Error creating user");
-    SetVisible(true);
-    setTimeout(()=>{
-      SetVisible(false);
-    }, 2000);
-    // navigate("/login");
-  };
+    const newUser: ServerResponse = await response.json();
+    if (!newUser.success) {
+
+      if (response.status == 409) {
+
+        SetMessage("Usuario ya existe");
+        SetVisible(true);
+        setTimeout(()=>{
+          SetVisible(false);
+        }, 2000);
+        return
+      }
+
+      if (response.status == 500) {
+
+        SetMessage("Error interno del servidor");
+        SetVisible(true);
+        setTimeout(()=>{
+          SetVisible(false);
+        }, 2000);
+        return
+      }
+
+    } else {
+
+        SetMessage("Usuario creado satisfactoriamente!");
+        SetVisible(true);
+        setTimeout(()=>{
+          SetVisible(false);
+          navigate("/login");
+        }, 2000);
+    }
+
+  }
 
   return(
   <>

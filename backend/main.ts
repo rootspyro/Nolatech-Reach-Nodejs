@@ -4,6 +4,7 @@ import sequelize from "./db/conn";
 import dotenv from "dotenv";
 import swaggerUI from "swagger-ui-express";
 import swaggerDocument from "./swagger.json";
+import cors from "cors";
 
 dotenv.config()
 
@@ -14,6 +15,10 @@ const port = process.env.PORT;
   await sequelize.sync();
 })();
 
+app.use(cors({
+  origin: "*",
+  methods: "GET,POST,PATCH,DELETE"
+}))
 app.use(express.json());
 app.use("/api/v1", router);
 app.use("/api/docs", swaggerUI.serve);
