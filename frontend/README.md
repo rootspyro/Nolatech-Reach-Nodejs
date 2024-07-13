@@ -39,3 +39,19 @@ $ npm run dev
 ```
 
 4. El servidor escuchar por defecto en el puerto `8080`.
+
+## Uso de la web.
+
+Se ha realizado el maquetado de un sitio web en React en base a un diseño brindado previamente. A este se le han agregado las siguientes functionalidades:
+- Crear un usuario.
+- Iniciar sesión en la web.
+
+El resto de funcionalidades de la API pueden ser consultados en la documentación del [backend](../backend/README.md).
+
+## Screenshots
+![image](https://github.com/user-attachments/assets/615eab52-6838-4d70-b4be-29233abf3a1e)
+![image](https://github.com/user-attachments/assets/8e04564d-fa91-4932-bd73-3010b2f3171b)
+![image](https://github.com/user-attachments/assets/3a267edd-c062-4e16-ac39-97e1a0feef62)
+
+
+
