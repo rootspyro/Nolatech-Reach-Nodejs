@@ -55,7 +55,6 @@ export default function Login(){
       });
 
       const newSession: ServerResponse = await response.json();
-      console.log(newSession);
 
       if (!newSession.success) {
 
