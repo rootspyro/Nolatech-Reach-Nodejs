@@ -40,6 +40,29 @@ function App() {
           </div>
         </div>
       </div>
+      <div className="w-full py-10 px-20 bg-green-dark flex justify-between items-center text-white font-bold">
+        <div>
+          <span className="text-2xl">Lorem ipsum dolor sit amet, consetetur</span>
+        </div> 
+        <ul className="w-full flex flex-row justify-end">
+          <li className="flex justify-center items-center flex-col border-r px-12 border-green-light">
+            <span className="text-white text-6xl">170</span>
+            <span className="text-green-light text-2xl font-normal">days</span>
+          </li>
+          <li className="flex justify-center items-center flex-col border-r px-12 border-green-light">
+            <span className="text-white text-6xl">13</span>
+            <span className="text-green-light text-2xl font-normal">hours</span>
+          </li>
+          <li className="flex justify-center items-center flex-col border-r px-12 border-green-light">
+            <span className="text-white text-6xl">39</span>
+            <span className="text-green-light text-2xl font-normal">minutes</span>
+          </li>
+          <li className="flex justify-center items-center flex-col px-12">
+            <span className="text-white text-6xl">29</span>
+            <span className="text-green-light text-2xl font-normal">seconds</span>
+          </li>
+        </ul>
+      </div>
     </>
   )
 }
