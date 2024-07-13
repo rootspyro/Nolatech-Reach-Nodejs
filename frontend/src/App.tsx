@@ -6,6 +6,11 @@ import pic3 from "./assets/Pic3.png";
 import pic4 from "./assets/Pic4.png";
 import pic5 from "./assets/Pic5.png";
 
+const onSubmit = (e: any) => {
+  e.preventDefault();
+  console.log("hello world");
+}
+
 function App() {
   return (
     <>
@@ -173,6 +178,28 @@ gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
         <div className="w-full flex justify-center mt-20">
           <button className="bg-green-light text-white font-bold text-xl px-14 py-3 rounded-md">VIEW ALL</button>
         </div>
+      </div>
+
+      <div className="w-full flex flex-row gap-4 bg-[url(/join.png)] bg-center bg-cover p-20">
+        <div className="w-full"></div> 
+        <div className="w-full flex flex-col gap-8">
+          <h3 className="text-white font-bold text-6xl">JOIN US.</h3> 
+          <span className="text-white text-lg">Lorem ipsum dolor sit amet, consetetur sadipscing elitr,</span>
+          <form onSubmit={e => onSubmit(e)} className="flex flex-col gap-4">
+            <div className="flex flex-row gap-4">
+              <input className="border-none p-3 w-full rounded-md outline-none bg-neutral-200 font-bold text-gray-dark" type="text" placeholder="Name"></input>
+              <input className="border-none p-3 w-full rounded-md outline-none bg-neutral-200 font-bold text-gray-dark" type="text" placeholder="Surname"></input>
+            </div>
+            <div className="flex flex-row gap-4">
+              <input className="border-none p-3 w-full rounded-md outline-none bg-neutral-200 font-bold text-gray-dark" type="text" placeholder="Phone"></input>
+              <input className="border-none p-3 w-full rounded-md outline-none bg-neutral-200 font-bold text-gray-dark" type="email" placeholder="Email"></input>
+            </div>
+            <input className="border-none p-3 w-full rounded-md outline-none bg-neutral-200 font-bold text-gray-dark" type="text" placeholder="Department"></input>
+            <textarea className="border-none h-40 p-3 w-full resize-none rounded-md outline-none bg-neutral-200 font-bold text-gray-dark" placeholder="Message"></textarea>
+            <input className="border-none p-5 w-full w-2/4 hover:bg-green-base duration-100 transition-all hover:cursor-pointer rounded-md outline-none bg-green-light font-bold text-white" type="submit" value="I'M IN"></input>
+            <span className="text-white text-base text-center">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</span>
+          </form>
+        </div> 
       </div>
     </>
   )
