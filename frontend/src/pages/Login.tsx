@@ -37,6 +37,9 @@ export default function Login(){
   } = useForm<Inputs>();
 
   useEffect(() => {
+    if (sessionStorage.getItem("session")) {
+      navigate("/");
+    }
   }, [visible]);
 
   const onSubmit: SubmitHandler<Inputs> = async(data: Inputs) => {
@@ -76,7 +79,7 @@ export default function Login(){
 
   return (
     <>
-    <div className="w-full p-10 flex flex-col justify-center items-center bg-green-800">
+    <div className="w-full p-10 flex flex-col justify-center items-center bg-emerald-800">
       <Navbar />
       <div className="p-10 mt-10 bg-white rounded shadow-lg flex items-center flex-col w-full max-w-sm">
         <h3 className="text-green-light font-bold text-4xl">INICIO DE SESIÓN</h3>
