@@ -214,7 +214,15 @@ async function CreateUser(req: Request, res: Response) {
 }
 
 async function GetSingleUser(req: Request, res: Response) {
-  const userId: string = req.param("userId");
+  const userId: string = req.params.userId;
+  if (!userId) {
+    res.status(400).json({
+      success: false,
+      error: "user id is required"
+    });
+    return
+  }
+
   const parsedId: number = parseInt(userId);
 
   if (!parsedId) {
@@ -268,7 +276,15 @@ async function GetSingleUser(req: Request, res: Response) {
 async function UpdateUser(req: Request, res: Response) {
   const body: NewUserBody = req.body;
   
-  const userId: string = req.param("userId");
+  const userId: string = req.params.userId;
+  if (!userId) {
+    res.status(400).json({
+      success: false,
+      error: "user id is required"
+    });
+    return
+  }
+
   const parsedId: number = parseInt(userId);
 
   if (!parsedId) {
@@ -464,7 +480,15 @@ async function UpdateUser(req: Request, res: Response) {
 }
 
 async function DeleteUser(req: Request, res: Response) {
-  const userId: string = req.param("userId");
+  const userId: string = req.params.userId;
+  if (!userId) {
+    res.status(400).json({
+      success: false,
+      error: "user id is required"
+    });
+    return
+  }
+
   const parsedId: number = parseInt(userId);
 
   if (!parsedId) {

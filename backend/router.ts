@@ -1,9 +1,16 @@
-import { Router } from "express";
+import { NextFunction, Router, Request, Response } from "express";
 import usersController from "./controllers/users/users.controller";
 import authController from "./controllers/auth/auth.controller";
-import { Request, Response } from "express";
 
 const router: Router = Router()
+
+router.use((req: Request, res: Response, next: NextFunction) => {
+  const path: string = req.path;
+  const method: string = req.method;
+  const date = new Date();
+  console.log(`${date.getFullYear()}:${date.getMonth()}:${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}.${date.getMilliseconds()} - ${method}:/api/v1${path}`);
+  next();
+})
 
 // Unprotected endpoints
 router.get("/health", (req: Request, res: Response) => {
@@ -14,7 +21,7 @@ router.get("/health", (req: Request, res: Response) => {
 })
 
 router.post("/users", usersController.CreateUser);
-router.post("/auth/login", authController.Login)
+router.post("/auth/login", authController.Login);
 
 // Protected endpoints (Authorization header required)
 router.get("/users", authController.ValidAuth, usersController.GetUsers);
