@@ -42,7 +42,7 @@ $ npm run dev
 
 ## Uso de la web.
 
-Se ha realizado el maquetado de un sitio web en React en base a un diseño brindado previamente. A este se le han agregado las siguientes functionalidades:
+Se ha realizado el maquetado de un sitio web en React en base a un diseño brindado previamente. A este se le han agregado las siguientes functionalidades segun se solicitó en los detalles de la prueba:
 - Crear un usuario.
 - Iniciar sesión en la web.
 
