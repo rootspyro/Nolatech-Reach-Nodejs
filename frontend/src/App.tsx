@@ -1,6 +1,9 @@
 import './App.css'
 import iconGrab from "./assets/icongrab.png";
 import pic1 from "./assets/Pic1.png";
+import pic2 from "./assets/Pic2.png";
+import pic3 from "./assets/Pic3.png";
+import pic4 from "./assets/Pic4.png";
 
 function App() {
   return (
@@ -83,6 +86,31 @@ gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
         <div className="w-full">
           <img src={pic1} alt="pic1"/>
         </div> 
+      </div>
+      <div className="w-full bg-gray-light p-20 flex flex-col items-center gap-8">
+        <h3 className="text-gray-dark text-6xl font-bold">Lorem ipsum</h3>
+        <p className="text-gray-dark text-normal text-center max-w-xl">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p> 
+        <div className="flex flex-row gap-4">
+          <div className="hover:shadow-lg hover:cursor-pointer transition-all duration-100">
+            <img src={pic2} alt="pic2" />
+            <div className="w-full bg-green-light text-center p-4">
+              <span className="text-white font-bold text-xl">LOREM IPSUM</span>
+            </div>
+          </div> 
+          <div className="hover:shadow-lg hover:cursor-pointer transition-all duration-100">
+            <img src={pic3} alt="pic3" />
+            <div className="w-full bg-green-light text-center p-4">
+              <span className="text-white font-bold text-xl">LOREM IPSUM</span>
+            </div>
+          </div> 
+          <div className="hover:shadow-lg hover:cursor-pointer transition-all duration-100">
+            <img src={pic4} alt="pic4" />
+            <div className="w-full bg-green-light text-center p-4">
+              <span className="text-white font-bold text-xl">LOREM IPSUM</span>
+            </div>
+          </div> 
+        </div>
+        <button className="border border-gray-dark text-gray-dark rounded-md py-3 px-10 font-bold">LEARN MORE</button>
       </div>
     </>
   )
