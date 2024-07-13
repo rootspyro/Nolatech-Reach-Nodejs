@@ -1,5 +1,6 @@
 import './App.css'
 import iconGrab from "./assets/icongrab.png";
+import pic1 from "./assets/Pic1.png";
 
 function App() {
   return (
@@ -62,6 +63,26 @@ function App() {
             <span className="text-green-light text-2xl font-normal">seconds</span>
           </li>
         </ul>
+      </div>
+      <div className="w-full p-20 flex flex-row gap-16">
+        <div className="w-full">
+          <h3 className="text-gray-dark font-bold text-6xl">Lorem ipsum dolor sit amet</h3>
+          <p className="text-gray-dark mt-10 text-lg">
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+diam nonumy eirmod tempor invidunt ut labore et dolore
+magna aliquyam erat, sed diam voluptua. At vero eos et
+accusam et justo duo dolores et ea rebum. Stet clita kasd
+gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+sed diam nonumy eirmod tempor invidunt ut labore et dolore
+magna aliquyam erat, sed diam voluptua. At vero eos et
+accusam et justo duo dolores et ea rebum. Stet clita kasd
+gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+          </p>
+        </div> 
+        <div className="w-full">
+          <img src={pic1} alt="pic1"/>
+        </div> 
       </div>
     </>
   )
