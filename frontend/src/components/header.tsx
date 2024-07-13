@@ -1,6 +1,6 @@
 export default function Header() {
   return (
-    <header className="fixed w-full bg-green-light flex justify-center  text-white gap-4">
+    <header className="fixed z-10 shadow-md w-full bg-green-light flex justify-center  text-white gap-4">
       <div className="bg-red flex gap-2 p-1 justify-center items-center">
         <span className="font-bold text-2xl">
           LIVE

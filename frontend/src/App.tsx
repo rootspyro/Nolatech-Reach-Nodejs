@@ -5,6 +5,18 @@ import pic2 from "./assets/Pic2.png";
 import pic3 from "./assets/Pic3.png";
 import pic4 from "./assets/Pic4.png";
 import pic5 from "./assets/Pic5.png";
+import pic7 from "./assets/Pic7.png";
+import pic8 from "./assets/Pic8.png";
+import pic9 from "./assets/Pic9.png";
+import pic10 from "./assets/Pic10.png";
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import {Pagination, A11y } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 const onSubmit = (e: any) => {
   e.preventDefault();
@@ -203,12 +215,40 @@ gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
       </div>
 
       <div className="px-20 py-40 bg-[url(/Pic6.png)] bg-center bg-cover flex">
-        <div className="w-full w-2/5 flex gap-8 flex-col">
+        <div className=" w-2/5 flex gap-8 flex-col">
           <h3 className="text-gray-dark font-bold text-6xl">Lorem ipsum dolor sit</h3>
           <p className="text-gray-dark text-sm">
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
           </p>
           <button className="bg-green-light text-white font-bold text-xl px-14 py-3 rounded-md w-2/4 mt-5">VIEW ALL</button>
+        </div>
+      </div>
+
+      <div className="bg-emerald-800 w-full p-20">
+        <h3 className="text-white text-center font-bold text-6xl">Lorem ipsum dolor sit amet</h3>
+        <div className="w-full mt-20 flex justify-center items-center">
+          <Swiper
+          modules={[Pagination, A11y]}
+          spaceBetween={0}
+          slidesPerView={3}
+          pagination={{ clickable: true }}
+          >
+            <SwiperSlide>
+              <img src={pic7} alt='picture' width={"300"}/>
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src={pic8} alt='picture' width={"300"}/>
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src={pic9} alt='picture' width={"300"}/>
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src={pic10} alt='picture' width={"300"}/>
+            </SwiperSlide>
+          </Swiper>
+        </div>
+        <div className="flex justify-center mt-20">
+          <button className="text-gray-dark bg-white rounded-md px-20 py-4 font-bold">VIEW ALL</button>
         </div>
       </div>
     </>
