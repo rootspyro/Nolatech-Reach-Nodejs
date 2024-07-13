@@ -78,6 +78,13 @@ $ npm run dev
 
 ```
 
+Otra manera de ejecutar el servidor es compilando el typescript a javascript de la siguiente manera:
+```shell
+$ npm run build
+$ npm start
+```
+
+
 6. Puedes verificar el status del servidor haciendo una petición al endpoint `/api/v1/health`:
 ```shell
 $ curl http://localhost:3000/api/v1/health
