@@ -1,6 +1,8 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Navbar from "../components/navbar";
+import Notification from "../components/notification";
 
 type Inputs = {
   username: string;
@@ -11,6 +13,8 @@ type Inputs = {
 
 export default function SignUp() {
   const navigate = useNavigate();
+  const [visible, SetVisible] = useState<boolean>(false);
+  const [message, SetMessage] = useState<string>("");
 
   const {
     register,
@@ -19,13 +23,24 @@ export default function SignUp() {
     formState: { errors }
   } = useForm<Inputs>();
 
+  useEffect(() => {
+
+  }, [visible]);
+
   const onSubmit: SubmitHandler<Inputs> = (data) => {
 
     console.log(data);
-    navigate("/login");
+
+    SetMessage("Error creating user");
+    SetVisible(true);
+    setTimeout(()=>{
+      SetVisible(false);
+    }, 2000);
+    // navigate("/login");
   };
 
   return(
+  <>
     <div className="w-full p-10 flex flex-col justify-center items-center bg-green-800">
       <Navbar />
       <div className="p-10 mt-10 bg-white rounded shadow-lg flex items-center flex-col w-full max-w-sm">
@@ -99,5 +114,7 @@ export default function SignUp() {
       </div>
       <span className="mt-5 text-white">Ya posees un usuario? <a href="/login" className="text-sky-400 underline hover:text-indigo-400">Inicia sesión</a>.</span>
     </div>
+    <Notification visible={visible} message={message} />
+</>
   )
 }
