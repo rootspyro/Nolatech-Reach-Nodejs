@@ -125,6 +125,55 @@ gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
           <img src={pic5} alt="pic5"/>
         </div>
       </div>
+      <div className="w-full p-20 text-gray-dark">
+        <h3 className="text-6xl font-bold text-center">Latest videos</h3>
+        <div className="grid grid-rows-2 grid-cols-3 mt-10 gap-16">
+          <div className="w-full flex gap-4 flex-col">
+            <div className="w-full video h-40 flex justify-center items-center">
+              <i className="ico-play-circle text-white text-5xl"></i>
+            </div> 
+            <span className="text-center">Lorem ipsum dolor sit amet, consetetur</span>
+          </div>
+
+          <div className="w-full flex gap-4 flex-col">
+            <div className="w-full video h-40 flex justify-center items-center">
+              <i className="ico-play-circle text-white text-5xl"></i>
+            </div> 
+            <span className="text-center">Lorem ipsum dolor sit amet, consetetur</span>
+          </div>
+
+          <div className="w-full flex gap-4 flex-col">
+            <div className="w-full video h-40 flex justify-center items-center">
+              <i className="ico-play-circle text-white text-5xl"></i>
+            </div> 
+            <span className="text-center">Lorem ipsum dolor sit amet, consetetur</span>
+          </div>
+
+          <div className="w-full flex gap-4 flex-col">
+            <div className="w-full video h-40 flex justify-center items-center">
+              <i className="ico-play-circle text-white text-5xl"></i>
+            </div> 
+            <span className="text-center">Lorem ipsum dolor sit amet, consetetur</span>
+          </div>
+
+          <div className="w-full flex gap-4 flex-col">
+            <div className="w-full video h-40 flex justify-center items-center">
+              <i className="ico-play-circle text-white text-5xl"></i>
+            </div> 
+            <span className="text-center">Lorem ipsum dolor sit amet, consetetur</span>
+          </div>
+
+          <div className="w-full flex gap-4 flex-col">
+            <div className="w-full video h-40 flex justify-center items-center">
+              <i className="ico-play-circle text-white text-5xl"></i>
+            </div> 
+            <span className="text-center">Lorem ipsum dolor sit amet, consetetur</span>
+          </div>
+        </div>
+        <div className="w-full flex justify-center mt-20">
+          <button className="bg-green-light text-white font-bold text-xl px-14 py-3 rounded-md">VIEW ALL</button>
+        </div>
+      </div>
     </>
   )
 }

@@ -8,3 +8,8 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+.video {
+  background-image: url("/video.png");
+  background-size: cover;
+}
