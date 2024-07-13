@@ -33,23 +33,20 @@ function App() {
         <div className="w-full flex-row flex justify-between mt-5 items-center">
           <img src={iconGrab} alt="logo" width="160"/>
           <ul className="w-full flex flex-row gap-8 justify-end text-white font-bold text-sm">
-            <li>
+            <li className="p-2">
               <a href="#">LOREM IPSUM</a>
             </li>
-            <li>
+            <li className="p-2">
               <a href="#">LOREM IPSUM</a>
             </li>
-            <li>
+            <li className="p-2">
               <a href="#">LOREM IPSUM</a>
             </li>
-            <li>
-              <a href="#">LOREM IPSUM</a>
+            <li className="p-2">
+              <a href="#">LOGIN</a>
             </li>
-            <li>
-              <a href="#">LOREM IPSUM</a>
-            </li>
-            <li>
-              <a href="#">LOREM IPSUM</a>
+            <li className="bg-white text-gray-dark rounded p-2">
+              <a href="/signup">REGISTRO</a>
             </li>
           </ul>
         </div>
