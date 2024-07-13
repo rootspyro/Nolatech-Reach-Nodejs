@@ -9,6 +9,7 @@ import pic7 from "./assets/Pic7.png";
 import pic8 from "./assets/Pic8.png";
 import pic9 from "./assets/Pic9.png";
 import pic10 from "./assets/Pic10.png";
+import Navbar from './components/navbar';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import {Pagination, A11y } from 'swiper/modules';
@@ -30,26 +31,7 @@ function App() {
     <>
       <SideMenu />
       <div id="home-header" className="w-full bg-center bg-cover py-10 px-20">
-        <div className="w-full flex-row flex justify-between mt-5 items-center">
-          <img src={iconGrab} alt="logo" width="160"/>
-          <ul className="w-full flex flex-row gap-8 justify-end text-white font-bold text-sm">
-            <li className="p-2">
-              <a href="#">LOREM IPSUM</a>
-            </li>
-            <li className="p-2">
-              <a href="#">LOREM IPSUM</a>
-            </li>
-            <li className="p-2">
-              <a href="#">LOREM IPSUM</a>
-            </li>
-            <li className="p-2">
-              <a href="#">LOGIN</a>
-            </li>
-            <li className="bg-white text-gray-dark rounded p-2">
-              <a href="/signup">REGISTRO</a>
-            </li>
-          </ul>
-        </div>
+        <Navbar />
         <div className="w-full flex mt-10 pb-10">
           <div className="w-2/3"></div>
           <div className="w-full flex flex-col gap-2">
