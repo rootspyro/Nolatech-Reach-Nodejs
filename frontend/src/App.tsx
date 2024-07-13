@@ -4,6 +4,7 @@ import pic1 from "./assets/Pic1.png";
 import pic2 from "./assets/Pic2.png";
 import pic3 from "./assets/Pic3.png";
 import pic4 from "./assets/Pic4.png";
+import pic5 from "./assets/Pic5.png";
 
 function App() {
   return (
@@ -111,6 +112,18 @@ gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
           </div> 
         </div>
         <button className="border border-gray-dark text-gray-dark rounded-md py-3 px-10 font-bold">LEARN MORE</button>
+      </div>
+      <div className="bg-green-light text-white font-bold flex items-center gap-8">
+        <div className="w-full p-20">
+          <h3 className="text-6xl">Lorem ipsum dolor sit amet, consetetur</h3>
+          <div className="w-4/5 flex flex-col gap-3 mt-10">
+            <button className="bg-white text-gray-dark text-lg rounded-md py-5">LOREM IPSUM DOLOR SIT</button>
+            <button className="border border-white text-lg rounded-md py-5">LOREM IPSUM DOLOR SIT</button>
+          </div> 
+        </div>
+        <div className="w-full flex items-end p-0">
+          <img src={pic5} alt="pic5"/>
+        </div>
       </div>
     </>
   )
