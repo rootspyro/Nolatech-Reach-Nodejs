@@ -73,7 +73,7 @@ function App() {
           </li>
         </ul>
       </div>
-      <div className="w-full p-20 flex flex-row gap-16">
+      <div className="w-full p-20 flex flex-row gap-16 bg-white">
         <div className="w-full">
           <h3 className="text-gray-dark font-bold text-6xl">Lorem ipsum dolor sit amet</h3>
           <p className="text-gray-dark mt-10 text-lg">
@@ -200,6 +200,16 @@ gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
             <span className="text-white text-base text-center">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</span>
           </form>
         </div> 
+      </div>
+
+      <div className="px-20 py-40 bg-[url(/Pic6.png)] bg-center bg-cover flex">
+        <div className="w-full w-2/5 flex gap-8 flex-col">
+          <h3 className="text-gray-dark font-bold text-6xl">Lorem ipsum dolor sit</h3>
+          <p className="text-gray-dark text-sm">
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+          </p>
+          <button className="bg-green-light text-white font-bold text-xl px-14 py-3 rounded-md w-2/4 mt-5">VIEW ALL</button>
+        </div>
       </div>
     </>
   )
