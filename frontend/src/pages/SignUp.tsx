@@ -46,35 +46,41 @@ export default function SignUp() {
 
   const onSubmit: SubmitHandler<Inputs> = async(data: Inputs) => {
 
-    const endpoint = import.meta.env.VITE_API_HOST + "/users";
-    const response = await fetch(endpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        username: data.username,
-        email: data.email,
-        password: data.password
-      })
-    });
+    try {
+      const endpoint = import.meta.env.VITE_API_HOST + "/users";
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          username: data.username,
+          email: data.email,
+          password: data.password
+        })
+      });
 
-    const newUser: ServerResponse = await response.json();
-    if (!newUser.success) {
-      
-      switch(response.status) {
-        case 409:
-          notify("Ya existe este usuario.");
-          break
+      const newUser: ServerResponse = await response.json();
+      if (!newUser.success) {
+        
+        switch(response.status) {
+          case 409:
+            notify("Ya existe este usuario.");
+            break
 
-        default:
-          notify("Ocurrió un error");
-          return;
+          default:
+            notify("Ocurrió un error");
+            return;
+        }
+
+      } else {
+        notify("Usuario creado satisfactoriamente");
+        navigate("/login");
       }
 
-    } else {
-      notify("Usuario creado satisfactoriamente");
-      navigate("/login");
+    } catch {
+      notify("Hay un error de conexión");
+      return
     }
 
   }

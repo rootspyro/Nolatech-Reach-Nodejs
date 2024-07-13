@@ -44,36 +44,41 @@ export default function Login(){
 
   const onSubmit: SubmitHandler<Inputs> = async(data: Inputs) => {
     const endpoint: string = import.meta.env.VITE_API_HOST + "/auth/login";
-    
-    const response = await fetch(endpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data),
-    });
 
-    const newSession: ServerResponse = await response.json();
-    console.log(newSession);
+    try {
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data),
+      });
 
-    if (!newSession.success) {
+      const newSession: ServerResponse = await response.json();
+      console.log(newSession);
 
-      switch(response.status) {
-        case 401:
-          notify("usuario o contraseña invalida");
-          break;
-        case 404:
-          notify("usuario o contraseña invalida");
-          break;
-        default:
-          notify("Ocurrio un error");
-          return;
+      if (!newSession.success) {
+
+        switch(response.status) {
+          case 401:
+            notify("usuario o contraseña invalida");
+            break;
+          case 404:
+            notify("usuario o contraseña invalida");
+            break;
+          default:
+            notify("Ocurrió un error");
+            return;
+        }
+
+      } else {
+        notify("Inicio de sesión exitoso");
+        localStorage.setItem("session", JSON.stringify(newSession.data));
+        navigate("/"); 
       }
-
-    } else {
-      notify("Inicio de sesión exitoso");
-      localStorage.setItem("session", JSON.stringify(newSession.data));
-      navigate("/"); 
+    } catch {
+      notify("Hay un error de conexión");
+      return
     }
   }
 
