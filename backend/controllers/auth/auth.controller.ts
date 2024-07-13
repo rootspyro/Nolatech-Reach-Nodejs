@@ -3,10 +3,10 @@ import { LoginBody, TokenPayload } from "./auth.pipes";
 import UserModel from "../../db/models/user.model";
 import { Op } from "sequelize";
 import { compare} from "bcrypt";
-import { configDotenv } from "dotenv";
+import { config } from "dotenv";
 import { sign, verify } from "jsonwebtoken";
 
-configDotenv();
+config();
 
 async function Login(req: Request, res: Response) {
 

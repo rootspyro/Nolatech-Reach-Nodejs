@@ -1,14 +1,14 @@
-import express, { Express } from "express";
+import * as express from "express";
 import router from "./router";
 import sequelize from "./db/conn";
-import dotenv from "dotenv";
-import swaggerUI from "swagger-ui-express";
-import swaggerDocument from "./swagger.json";
-import cors from "cors";
+import {config} from "dotenv";
+import * as swaggerUI from "swagger-ui-express";
+import * as swaggerDocument from "./swagger.json";
+import * as cors from "cors";
 
-dotenv.config()
+config();
 
-const app: Express = express();
+const app: express.Express = express();
 const port = process.env.PORT;
 
 (async () => {

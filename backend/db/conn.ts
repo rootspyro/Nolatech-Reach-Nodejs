@@ -1,7 +1,7 @@
 import { Sequelize } from "sequelize";
-import dotenv from "dotenv";
+import {config} from "dotenv";
 
-dotenv.config()
+config();
 
 let db: string = "";
 let user: string = "";
