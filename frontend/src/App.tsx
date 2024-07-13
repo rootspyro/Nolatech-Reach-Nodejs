@@ -60,7 +60,7 @@ function App() {
             <span className="text-6xl text-gray-dark bg-white font-bold">LOREM IPSUM DOLOR</span>
             <span className="text-6xl text-white font-bold">LOREM IPSUM</span>
             <div>
-              <button className="mt-10 bg-green-light text-white font-bold py-3 px-6 hover:bg-green-base transition-all duration-100 rounded-md">WHAT IS NEXT</button>
+              <button className="mt-10 bg-green-light text-white font-bold py-3 px-6 hover:bg-green-base transition-all duration-100 rounded">WHAT IS NEXT</button>
             </div>
           </div>
         </div>
@@ -131,7 +131,7 @@ gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
             </div>
           </div> 
         </div>
-        <button className="border border-gray-dark text-gray-dark rounded-md py-3 px-10 font-bold hover:bg-gray-dark hover:text-white transition-all duration-200">
+        <button className="border border-gray-dark text-gray-dark rounded py-3 px-10 font-bold hover:bg-gray-dark hover:text-white transition-all duration-200">
           LEARN MORE
         </button>
       </div>
@@ -139,10 +139,10 @@ gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
         <div className="w-full p-20">
           <h3 className="text-6xl">Lorem ipsum dolor sit amet, consetetur</h3>
           <div className="w-4/5 flex flex-col gap-3 mt-10">
-            <button className="bg-white text-gray-dark text-lg rounded-md py-5 duration-200 transition-all hover:bg-green-dark hover:text-white">
+            <button className="bg-white text-gray-dark text-lg rounded py-5 duration-200 transition-all hover:bg-green-dark hover:text-white">
               LOREM IPSUM DOLOR SIT
             </button>
-            <button className="border border-white text-lg rounded-md py-5 duration-200 transition-all hover:bg-white hover:text-gray-dark">
+            <button className="border border-white text-lg rounded py-5 duration-200 transition-all hover:bg-white hover:text-gray-dark">
               LOREM IPSUM DOLOR SIT
             </button>
           </div> 
@@ -197,7 +197,7 @@ gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
           </div>
         </div>
         <div className="w-full flex justify-center mt-20">
-          <button className="bg-green-light text-white font-bold text-xl px-14 py-3 rounded-md hover:bg-green-base hover:text-white duration-200 transition-all">
+          <button className="bg-green-light text-white font-bold text-xl px-14 py-3 rounded hover:bg-green-base hover:text-white duration-200 transition-all">
           VIEW ALL
           </button>
         </div>
@@ -231,7 +231,7 @@ gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
           <p className="text-gray-dark text-sm">
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
           </p>
-          <button className="bg-green-light hover:bg-green-base duration-200 transition-all text-white font-bold text-xl px-14 py-3 rounded-md w-2/4 mt-5">
+          <button className="bg-green-light hover:bg-green-base duration-200 transition-all text-white font-bold text-xl px-14 py-3 rounded w-2/4 mt-5">
           VIEW ALL
           </button>
         </div>
@@ -261,7 +261,7 @@ gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
           </Swiper>
         </div>
         <div className="flex justify-center mt-20">
-          <button className="text-gray-dark bg-white rounded-md px-20 py-4 font-bold hover:bg-green-light hover:text-white transition-all duration-200">
+          <button className="text-gray-dark bg-white rounded px-20 py-4 font-bold hover:bg-green-light hover:text-white transition-all duration-200">
           VIEW ALL
           </button>
         </div>
