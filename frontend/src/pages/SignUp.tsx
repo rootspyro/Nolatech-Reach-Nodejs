@@ -1,4 +1,5 @@
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/navbar";
 
 type Inputs = {
@@ -9,6 +10,8 @@ type Inputs = {
 }
 
 export default function SignUp() {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -16,7 +19,11 @@ export default function SignUp() {
     formState: { errors }
   } = useForm<Inputs>();
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+
+    console.log(data);
+    navigate("/login");
+  };
 
   return(
     <div className="w-full p-10 flex flex-col justify-center items-center bg-green-800">

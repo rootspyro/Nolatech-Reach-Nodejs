@@ -1,5 +1,4 @@
 import './App.css'
-import iconGrab from "./assets/icongrab.png";
 import pic1 from "./assets/Pic1.png";
 import pic2 from "./assets/Pic2.png";
 import pic3 from "./assets/Pic3.png";
