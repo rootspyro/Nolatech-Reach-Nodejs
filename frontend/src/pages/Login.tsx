@@ -37,7 +37,7 @@ export default function Login(){
   } = useForm<Inputs>();
 
   useEffect(() => {
-    if (sessionStorage.getItem("session")) {
+    if (localStorage.getItem("session")) {
       navigate("/");
     }
   }, [visible]);
@@ -72,7 +72,7 @@ export default function Login(){
 
     } else {
       notify("Inicio de sesión exitoso");
-      sessionStorage.setItem("session", JSON.stringify(newSession.data));
+      localStorage.setItem("session", JSON.stringify(newSession.data));
       navigate("/"); 
     }
   }

@@ -39,7 +39,7 @@ export default function SignUp() {
   }
 
   useEffect(() => {
-    if (sessionStorage.getItem("session")) {
+    if (localStorage.getItem("session")) {
       navigate("/");
     }
   }, [visible]);

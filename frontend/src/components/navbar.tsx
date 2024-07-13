@@ -16,12 +16,12 @@ export default function Navbar() {
   const [session, SetSession] = useState<boolean>(false);
 
   const closeSession = () => {
-    sessionStorage.removeItem("session");
+    localStorage.removeItem("session");
     SetSession(false);
   }
 
   useEffect(() => {
-    const session = sessionStorage.getItem("session");
+    const session = localStorage.getItem("session");
     if (session) {
       SetSession(true); 
       SetUser(JSON.parse(session)) 
