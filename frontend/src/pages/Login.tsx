@@ -69,6 +69,7 @@ export default function Login(){
 
     } else {
       notify("Inicio de sesión exitoso");
+      sessionStorage.setItem("session", JSON.stringify(newSession.data));
       navigate("/"); 
     }
   }
